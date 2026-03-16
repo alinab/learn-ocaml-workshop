@@ -1,3 +1,4 @@
+open! Stdio
 (* Welcome to OCaml challenges!
 
    This exercise is just meant to familiarize you with the system.
@@ -18,4 +19,4 @@
 
    You can also execute code in utop directly. Try pasting this line of code
    into utop and running it there. *)
-let () = Stdio.printf "Hello, World!"
+let () = Stdio.printf "Hello, World!
