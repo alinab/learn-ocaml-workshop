@@ -1,7 +1,7 @@
 open! Base
 
-(* As in most languages, you can define your own types.
-   The keyword "type" introduces a type definition.
+(* As in most languages, you can define your own types. OCaml makes
+   this easy with the keyword "type" which introduces a type definition.
 
    One of the non-basic types in OCaml is called the variant type.
    Variant types are similar to Enums in other languages. They are
