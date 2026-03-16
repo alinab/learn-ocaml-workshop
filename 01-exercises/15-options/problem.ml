@@ -45,7 +45,9 @@ let%test "Testing safe_divide..." =
 (* Implement a function [concatenate string1 string2], which takes two
    [string option]s and returns a [string option] that is [Some x]
    where x is the concatenation of the two strings, if they exist, and
-   [None] if either of the strings is [None]. *)
+   [None] if either of the strings is [None]. 
+    
+   The string append ("^") function will come be handy.  *)
 let option_concatenate string1 string2 = 
   failwith "For you to implement"
 
