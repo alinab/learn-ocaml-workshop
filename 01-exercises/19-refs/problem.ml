@@ -14,11 +14,16 @@ let () =
 
 (* Write a function min_and_max which returns a tuple containing the
    minimum and maximum values in a non-empty list of positive
-   integers. Your function should raise if the list is empty.
+   integers. Your function should raise an exception if the list is empty.
+
+   Exceptions are defined with the "exception" keyword. Read this section:
+   https://ocaml.org/docs/error-handling#exceptions and then define an 
+   exception for an empty list. Place it at the beginning the file, 
+   around line 3 and use it in the min_and_max function below.
 
    Your function should iterate over the list and maintain refs of the
    minimum and maximum values seen so far.  *)
-let min_and_max lst =
+let min_and_max lst = 
   failwith "For you to implement"
 
 let%test "Testing min_and_max..." =
