@@ -17,7 +17,8 @@ open! Base
 *) 
 
 let simpler_sum xs = failwith "For you to implement"
-let simpler_product xs = failwith "For you to implement"
+
+let simpler_product xs = failwith "For you to implement" 
 
 (* List.map
 
@@ -29,6 +30,8 @@ let simpler_product xs = failwith "For you to implement"
 
    Let's write a function that takes in an int list and transforms
    it into a float list
+
+   The Int.to_float function will be handy.
 *)
 
 let float_of_int xs = failwith "For you to implement"
@@ -70,7 +73,7 @@ let range from to_ = failwith "For you to implement"
    Lets use [iter] to print a list of ints
 *)
 
-let print_int_list xs = failwith "For you to implement"
+let print_int_list xs = failwith "For you to implement" 
 
 (* There are many more useful List functions but a couple that are worth noting are
 
