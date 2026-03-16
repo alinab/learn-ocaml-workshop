@@ -30,6 +30,7 @@ open! Base
 
    int four;
 *)
+
 let four = 4
 
 (* float_four is a value with the type float. We write the signature like this:
@@ -45,6 +46,7 @@ let four = 4
 
    Try inserting an incorrect signature for [float_four] to see what error the
    compiler gives you. *)
+
 let float_four = 4.
 
 (* Function signatures
@@ -61,18 +63,56 @@ let float_four = 4.
    val int_average : int -> int -> int
 
    In OCaml there's no explicit return statement: functions just return the
-   value of the last statement in that function. *)
+   value of the last statement in that function.
+
+   There will be more about functions later, but note that in OCaml, there are
+   no parentheses when applying a function! So the following expression computes
+   the average of 10 and 20:
+
+   int_average 10 20
+
+   The lines that follow are inline tests. Each evaluates a boolean expression.
+   They are run during the build, and failures -- evaluating to false -- are
+   treated like compile errors by the build tool and editors.
+
+   We will see other kinds of inline tests later, and some interesting patterns
+   for using them. *)
+
 let int_average x y = failwith "For you to implement"
 
 (* val float_average : float -> float -> float *)
 let float_average x y = failwith "For you to implement"
 
-(* There will be more about functions later, but note that in OCaml, there are
-   no parentheses when applying a function! So the following expression computes
-   the average of 10 and 20:
+(* While OCaml supports polymorphic comparison, it is good practice to use
+   equality and comparison functions specific to each type.
 
-   int_average 10 20
+   So, [Int.equal] is the [equal] function defined in the [Int] module. Its
+   signature is
+
+   val equal : int -> int -> bool
+
+   In words: [equal] takes two [int]s and returns a [bool]. The following line
+   is applying that function to two inputs, [5] and [int_average 5 5]. *)
+
+let%test "Testing int_average..." =
+  Int.equal (int_average 5 5) 5
+
+(* Modules can also contain operators. By convention, the equality operator is
+   defined and equivalent to the [equal] function. To reference an operator in a
+   module, we need to surround it with parentheses. Try removing the parentheses
+   to see what error you get.
+
+   Int.(=) is the same as Int.equal
 *)
+
+let%test "Testing int_average..." =
+  Int.(=) (int_average 50 100) 75
+
+let%test "Testing float_average..." =
+  Float.(=) (float_average 5. 5.) 5.
+
+let%test "Testing float_average..." =
+  Float.equal (float_average 5. 10.) 7.5
 
 (* As in many languages strings are denoted with "" and chars are denoted with ''.
 
@@ -125,45 +165,8 @@ let () =
 
 (* Like many other programming languages, you can use format strings too *)
 let () =
-  Stdio.printf "Hi, My name is %s and I am %d years old\n" full_name 5
+  Stdio.printf "Hi, My name is %s and I am %d years old\n" full_name 5;
 
-(* The lines that follow are inline tests. Each evaluates a boolean expression.
-   They are run during the build, and failures -- evaluating to false -- are
-   treated like compile errors by the build tool and editors.
-
-   We will see other kinds of inline tests later, and some interesting patterns
-   for using them. *)
-
-(* While OCaml supports polymorphic comparison, it is good practice to use
-   equality and comparison functions specific to each type.
-
-   So, [Int.equal] is the [equal] function defined in the [Int] module. Its
-   signature is
-
-   val equal : int -> int -> bool
-
-   In words: [equal] takes two [int]s and returns a [bool]. The following line
-   is applying that function to two inputs, [5] and [int_average 5 5]. *)
-
-let%test "Testing int_average..." =
-  Int.equal (int_average 5 5) 5
-
-(* Modules can also contain operators. By convention, the equality operator is
-   defined and equivalent to the [equal] function. To reference an operator in a
-   module, we need to surround it with parentheses. Try removing the parentheses
-   to see what error you get.
-
-   Int.(=) is the same as Int.equal
-*)
-
-let%test "Testing int_average..." =
-  Int.(=) (int_average 50 100) 75
-
-let%test "Testing float_average..." =
-  Float.(=) (float_average 5. 5.) 5.
-
-let%test "Testing float_average..." =
-  Float.equal (float_average 5. 10.) 7.5
 
 (* .mli files
    ==========
