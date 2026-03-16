@@ -9,10 +9,16 @@ let is_superman x =
   match x with
   | "Clark Kent" -> true
   | _ -> false
-;;
 
 (* We can also pattern match on multiple values at the same time. *)
 let is_same_person x y = 
+  match x, y with 
+  | "Clark Kent", "Superman" -> true
+  | "Peter Parker", "Spiderman" -> true
+  | _ -> false
+
+(* The is_same_person function can also be written as: *)
+let is_same_person' x y = 
   match x, y with 
   | "Clark Kent", "Superman" 
   | "Peter Parker", "Spiderman" -> true
