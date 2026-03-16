@@ -17,7 +17,7 @@ type color =
    used the [compare] ppx for [stoplight] below, which has a [color] as one of
    its fields, but we didn't have [compare] on [color].
 
-   Fix it by adding this: [@@deriving compare]
+   Fix it by adding this: [@@deriving compare] in the type "color" defined above.
 *)
 
 type stoplight =
